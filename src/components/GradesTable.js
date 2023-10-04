@@ -23,8 +23,8 @@ function GradesTable({ grades }) {
       default: return 0; 
     }
   }
-  const totalWeightedPoints = filteredGrades.reduce((total, grade) => total + gradeToPoint(grade.grade) * grade.units, 0);
-  const totalUnits = filteredGrades.reduce((total, grade) => total + parseFloat(grade.units), 0);
+  const totalWeightedPoints = grades.reduce((total, grade) => total + gradeToPoint(grade.grade) * grade.units, 0);
+  const totalUnits = grades.reduce((total, grade) => total + parseFloat(grade.units), 0);
 
   const GWA = totalUnits !== 0 ? totalWeightedPoints / totalUnits : 0;
 
@@ -57,8 +57,7 @@ function GradesTable({ grades }) {
           ))}
           <tr>
             <td colSpan="3" style={{textAlign: "right"}}>Total</td>
-            <td style={{textAlign: "right"}}>{GWA}</td>
-
+            <td style={{textAlign: "right"}}>{GWA.toFixed(2)}</td>
          </tr>
         
         </tbody>
